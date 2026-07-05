@@ -226,3 +226,151 @@ display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:24px;
 }
+.feature-card,
+.product-card,
+.value-box{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+border-radius:24px;
+padding:32px;
+transition:all .35s ease;
+}
+
+.feature-card:hover,
+.product-card:hover,
+.value-box:hover{
+transform:translateY(-8px);
+border-color:#3b82f6;
+box-shadow:0 15px 40px rgba(59,130,246,.18);
+}
+
+.feature-card h3,
+.product-card h3{
+font-size:24px;
+margin-bottom:14px;
+}
+
+.feature-card p,
+.product-card p{
+color:var(--muted);
+}
+
+.product-card span{
+display:inline-block;
+margin-top:18px;
+padding:8px 16px;
+border-radius:999px;
+background:rgba(59,130,246,.12);
+border:1px solid rgba(59,130,246,.35);
+color:#7cb3ff;
+font-size:14px;
+font-weight:600;
+}
+
+.values-grid{
+margin-top:30px;
+}
+
+.value-box{
+font-size:26px;
+font-weight:700;
+text-align:center;
+}
+
+.contact p{
+margin:18px 0;
+font-size:18px;
+color:var(--muted);
+}
+
+.contact strong{
+color:white;
+font-size:20px;
+}
+
+footer{
+width:100%;
+margin-top:80px;
+padding:60px 24px;
+border-top:1px solid rgba(255,255,255,.08);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+gap:18px;
+}
+
+.footer-logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:22px;
+font-weight:800;
+}
+
+footer p{
+color:var(--muted);
+}
+
+html::-webkit-scrollbar{
+width:8px;
+}
+
+html::-webkit-scrollbar-thumb{
+background:#3b82f6;
+border-radius:999px;
+}
+
+html::-webkit-scrollbar-track{
+background:#050505;
+}
+
+@media(max-width:900px){
+
+nav{
+padding:14px 18px;
+}
+
+nav ul{
+display:none;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.subtitle{
+font-size:17px;
+}
+
+h2{
+font-size:38px;
+}
+
+.about-text,
+.vision-text{
+font-size:17px;
+}
+
+.buttons{
+flex-direction:column;
+width:100%;
+}
+
+button{
+width:100%;
+}
+
+.feature-grid,
+.product-grid,
+.values-grid{
+grid-template-columns:1fr;
+}
+
+section{
+width:92%;
+}
+
+}
