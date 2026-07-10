@@ -52,20 +52,29 @@ flex-direction:column;
 }
 
 nav{
-position:sticky;
+position:fixed;
 top:18px;
-width:92%;
-max-width:1200px;
-margin:20px auto;
-padding:16px 28px;
+left:50%;
+transform:translateX(-50%);
+width:min(92%,1150px);
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(255,255,255,.05);
+
+padding:14px 24px;
+
+background:rgba(12,16,24,.55);
 backdrop-filter:blur(18px);
+
 border:1px solid rgba(255,255,255,.08);
-border-radius:20px;
-z-index:999;
+border-radius:18px;
+
+box-shadow:0 10px 35px rgba(0,0,0,.28);
+
+z-index:1000;
+
+transition:.35s ease;
 }
 
 .logo{
@@ -74,6 +83,9 @@ align-items:center;
 gap:12px;
 font-weight:800;
 letter-spacing:1px;
+font-size:26px;
+color:#ffffff;
+transition:.3s ease;
 }
 
 .logo-icon{
