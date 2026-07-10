@@ -122,9 +122,10 @@ text-transform:uppercase;
 }
 
 .hero h1{
-font-size:78px;
-line-height:1.05;
+font-size:clamp(54px,8vw,92px);
+line-height:1;
 font-weight:900;
+letter-spacing:-2px;
 max-width:900px;
 }
 
@@ -133,10 +134,11 @@ color:var(--blue);
 }
 
 .subtitle{
-margin-top:30px;
+margin-top:28px;
 max-width:720px;
 font-size:20px;
-color:var(--muted);
+color:#c7c7c7;
+line-height:1.8;
 }
 
 .buttons{
