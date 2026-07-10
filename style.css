@@ -411,4 +411,59 @@ section{
 width:92%;
 }
 
+/* ===== Scroll Reveal ===== */
+
+.reveal{
+opacity:0;
+transform:translateY(70px);
+transition:
+opacity .8s ease,
+transform .8s cubic-bezier(.22,1,.36,1);
+will-change:opacity,transform;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* Divider Animation */
+
+.divider{
+transform:scaleX(.3);
+opacity:.15;
+transform-origin:center;
+transition:
+transform .8s ease,
+opacity .8s ease;
+}
+
+.divider.active{
+transform:scaleX(1);
+opacity:1;
+}
+
+/* Card Hover */
+
+.feature-card,
+.product-card,
+.value-box{
+
+transition:
+transform .35s ease,
+box-shadow .35s ease,
+border-color .35s ease;
+
+}
+
+.feature-card:hover,
+.product-card:hover,
+.value-box:hover{
+
+transform:translateY(-12px);
+
+box-shadow:0 20px 50px rgba(59,130,246,.25);
+
+}
+
 }
