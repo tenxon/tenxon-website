@@ -1243,3 +1243,35 @@ margin:60px auto;
 }
 
 }
+
+.active-link{
+color:#fff !important;
+}
+
+.active-link::after{
+width:100% !important;
+}
+
+.mouse{
+width:28px;
+height:46px;
+border:2px solid rgba(255,255,255,.35);
+border-radius:999px;
+display:flex;
+justify-content:center;
+padding-top:8px;
+margin:auto;
+margin-top:80px;
+}
+
+.wheel{
+width:4px;
+height:10px;
+background:#60a5fa;
+border-radius:999px;
+}
+
+.scroll-indicator{
+display:flex;
+justify-content:center;
+}
