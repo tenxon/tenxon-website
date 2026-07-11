@@ -1,22 +1,119 @@
-const reveals=document.querySelectorAll(".reveal");
+/* ==========================
+   TENXON V5
+   script.js
+========================== */
 
-function revealOnScroll(){
+const revealElements = document.querySelectorAll(".reveal");
+const cards = document.querySelectorAll(".card,.vision-card,.product-card");
+const dividers = document.querySelectorAll(".section-divider");
+const navbar = document.querySelector(".navbar");
 
-const trigger=window.innerHeight*0.82;
+/* ==========================
+   REVEAL + AUTO POP
+========================== */
 
-reveals.forEach(item=>{
+const revealObserver = new IntersectionObserver((entries)=>{
 
-const top=item.getBoundingClientRect().top;
+entries.forEach(entry=>{
 
-const bottom=item.getBoundingClientRect().bottom;
+if(entry.isIntersecting){
 
-if(top<trigger && bottom>100){
+entry.target.classList.add("show");
 
-item.classList.add("active");
+if(
+entry.target.classList.contains("card") ||
+entry.target.classList.contains("vision-card") ||
+entry.target.classList.contains("product-card")
+){
 
-}else{
+entry.target.classList.add("active");
 
-item.classList.remove("active");
+}
+
+}
+
+});
+
+},{
+threshold:0.18,
+rootMargin:"0px 0px -28% 0px"
+});
+
+revealElements.forEach(el=>{
+
+revealObserver.observe(el);
+
+});
+
+/* ==========================
+   DIVIDER ANIMATION
+========================== */
+
+const dividerObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("active");
+
+}
+
+});
+
+},{
+threshold:.25
+});
+
+dividers.forEach(divider=>{
+
+dividerObserver.observe(divider);
+
+});
+
+/* ==========================
+   NAVBAR SHRINK
+========================== */
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>80){
+
+navbar.style.top="10px";
+
+navbar.querySelector(".nav-wrapper").style.padding="12px 20px";
+
+navbar.querySelector(".nav-wrapper").style.background="rgba(8,14,24,.82)";
+
+}
+
+else{
+
+navbar.style.top="18px";
+
+navbar.querySelector(".nav-wrapper").style.padding="15px 24px";
+
+navbar.querySelector(".nav-wrapper").style.background="rgba(12,18,30,.62)";
+
+}
+
+});
+
+/* ==========================
+   CARD GLOW BEFORE CENTER
+========================== */
+
+function animateCards(){
+
+cards.forEach(card=>{
+
+const rect = card.getBoundingClientRect();
+
+const trigger = window.innerHeight*0.60;
+
+if(rect.top<trigger){
+
+card.classList.add("active");
 
 }
 
@@ -24,28 +121,119 @@ item.classList.remove("active");
 
 }
 
-window.addEventListener("scroll",revealOnScroll);
+window.addEventListener("scroll",animateCards);
 
-window.addEventListener("load",revealOnScroll);
+animateCards();
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+/* ==========================
+   SMOOTH ACTIVE LINKS
+========================== */
 
-anchor.addEventListener("click",function(e){
+document.querySelectorAll('nav a').forEach(link=>{
 
-e.preventDefault();
+link.addEventListener("click",()=>{
 
-const target=document.querySelector(this.getAttribute("href"));
+document.querySelectorAll("nav a").forEach(a=>{
 
-if(target){
-
-target.scrollIntoView({
-
-behavior:"smooth"
+a.classList.remove("active-link");
 
 });
+
+link.classList.add("active-link");
+
+});
+
+});
+
+/* ==========================
+   BUTTON PRESS EFFECT
+========================== */
+
+document.querySelectorAll("a").forEach(btn=>{
+
+btn.addEventListener("mousedown",()=>{
+
+btn.style.transform="scale(.97)";
+
+});
+
+btn.addEventListener("mouseup",()=>{
+
+btn.style.transform="";
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+
+btn.style.transform="";
+
+});
+
+});
+
+/* ==========================
+   PARALLAX ORBS
+========================== */
+
+const orb1=document.querySelector(".orb-one");
+const orb2=document.querySelector(".orb-two");
+
+window.addEventListener("mousemove",(e)=>{
+
+const x=(e.clientX/window.innerWidth)-0.5;
+const y=(e.clientY/window.innerHeight)-0.5;
+
+if(orb1){
+
+orb1.style.transform=`translate(${x*30}px,${y*30}px)`;
+
+}
+
+if(orb2){
+
+orb2.style.transform=`translate(${-x*25}px,${-y*25}px)`;
 
 }
 
 });
 
+/* ==========================
+   SCROLL INDICATOR
+========================== */
+
+const wheel=document.querySelector(".wheel");
+
+if(wheel){
+
+setInterval(()=>{
+
+wheel.animate([
+
+{
+transform:"translateY(0)",
+opacity:1
+},
+
+{
+transform:"translateY(10px)",
+opacity:.3
+},
+
+{
+transform:"translateY(0)",
+opacity:1
+}
+
+],{
+
+duration:1400
+
 });
+
+},1400);
+
+}
+
+/* ==========================
+   END
+========================== */
